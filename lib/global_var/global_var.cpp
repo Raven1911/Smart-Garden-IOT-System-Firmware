@@ -25,8 +25,15 @@ deviceName Pump2 = {"Pump2", false, "Low"};
 deviceName Led2 = {"Led2", true, "Medium"};
 
 //biến từ cảm biến
-const int Value_SoilMoisture = 0;
-const int Value_Light = 0;
-const float Value_Temperature = 0.0;
-const float Value_Humidity = 0.0;
+int Value_SoilMoisture = 0;
+int Value_Light = 0;
+float Value_Temperature = 0.0;
+float Value_Humidity = 0.0;
 bool State_FSM = true;
+
+void pinSetup (void){
+    pinMode(pump, OUTPUT);
+    pinMode(fan, OUTPUT);
+    pinMode(soilMoisturePin, INPUT);
+    Wire1.begin(21, 22); //chân của I2C
+}

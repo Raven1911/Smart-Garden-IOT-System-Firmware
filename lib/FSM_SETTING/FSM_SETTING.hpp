@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <global_var.hpp>
+#include <control.hpp>
 
 #ifdef __cplusplus
 extern "C" {
