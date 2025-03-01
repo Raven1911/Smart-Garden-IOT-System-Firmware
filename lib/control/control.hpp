@@ -6,7 +6,12 @@
 #include "DHT20.h"
 #include "global_var.hpp"
 
-// extern Adafruit_NeoPixel NeoPixel;
+#endif
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 
 void pump_on();
 void pump_off();  
@@ -14,4 +19,6 @@ void controlFan();
 // void controlRGB();
 void led_on();
 
+#ifdef __cplusplus
+}
 #endif

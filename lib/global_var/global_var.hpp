@@ -18,9 +18,9 @@ extern "C"
 #define PIN_NEO_PIXEL 26
 #define NUM_PIXELS 4
 
-    // software timer configuration
-    void millis_update(void);
-    extern unsigned long millis_present;
+// software timer configuration
+void millis_update(void);
+extern unsigned long millis_present;
 #define priod_receiver_data 100
 
     // variable receiver data

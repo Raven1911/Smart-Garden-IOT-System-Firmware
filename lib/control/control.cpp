@@ -1,11 +1,5 @@
 #include "control.hpp"
 
-// #define NUM_PIXELS 4 // Define the number of pixels
-
-// extern Adafruit_NeoPixel NeoPixel;
-// extern DHT20 DHT;
-Adafruit_NeoPixel NeoPixel(NUM_PIXELS, PIN_NEO_PIXEL, NEO_GRB + NEO_KHZ800);
-
 void pump_on()
 {
   digitalWrite(pump, HIGH);
@@ -25,11 +19,11 @@ void controlFan()
 
 void Led_on()
 {   
-  for (int i = 0; i < NUM_PIXELS; i++)
-  {
-    NeoPixel.setPixelColor(i, NeoPixel.Color(255, 255, 255));
-    NeoPixel.show();
-  }
+  // for (int i = 0; i < NUM_PIXELS; i++)
+  // {
+  //   NeoPixel.setPixelColor(i, NeoPixel.Color(255, 255, 255));
+  //   NeoPixel.show();
+  // }
 }
 
 // void controlRGB()

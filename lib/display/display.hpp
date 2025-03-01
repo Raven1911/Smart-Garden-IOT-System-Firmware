@@ -6,6 +6,15 @@
 #include "DHT20.h"
 #include "global_var.hpp"
 
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 void lcdDisplay();
 
+#ifdef __cplusplus
+}
+#endif
 #endif
