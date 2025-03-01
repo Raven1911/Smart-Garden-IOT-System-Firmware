@@ -22,3 +22,10 @@ deviceName Led1 = {"LED Light", true, "Medium"};
 deviceName Fan2 = {"Cooling Fan", true, "High"};
 deviceName Pump2 = {"Water Pump", false, "Low"};
 deviceName Led2 = {"LED Light", true, "Medium"};
+
+//biến từ cảm biến
+const int Value_SoilMoisture = 0;
+const int Value_Light = 0;
+const float Value_Temperature = 0.0;
+const float Value_Humidity = 0.0;
+

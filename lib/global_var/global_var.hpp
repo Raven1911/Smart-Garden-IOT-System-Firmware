@@ -9,6 +9,12 @@ extern "C" {
 
 //GPIO configuration
 #define BUZZER_PIN 25 //  BUZZER_PIN
+#define soilMoisturePin  32 //cảm biến đất 
+#define light  33 //cảm biến ánh sáng
+#define pump 19
+#define fan  27
+#define PIN_NEO_PIXEL 26
+#define NUM_PIXELS 4
 
 
 //software timer configuration
@@ -40,6 +46,12 @@ extern const char* mqtt_server;
 extern const char* topicSub;  // Topic nhận dữ liệu
 extern const char* topicPub;         // Topic gửi dữ liệu
 
+
+//biến từ cảm biến
+extern int Value_SoilMoisture;
+extern int Value_Light;
+extern float Value_Temperature;
+extern float Value_Humidity;
 
 
 
