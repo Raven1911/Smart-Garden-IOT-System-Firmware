@@ -9,16 +9,18 @@ extern "C" {
 
 
 #define BUZZER_PIN 25 //  BUZZER_PIN
+#define soilMoisturePin  32 //cảm biến đất 
+#define light  33 //cảm biến ánh sáng
 
 
 
 /// Configuration MQTT Server and Wifi Connection
-const char* ssid = "ACLAB";
-const char* password = "ACLAB2023";
-const char* mqtt_server = "test.mosquitto.org";
+extern const char* ssid;
+extern const char* password;
+extern const char* mqtt_server;
 // const char* topicSub = "0rm10p/read/Mario@M7";  // Topic nhận dữ liệu
-const char* topicSub = "server/sensors/esp32";  // Topic nhận dữ liệu
-const char* topicPub = "/home/sensors/esp32";         // Topic gửi dữ liệu
+extern const char* topicSub;  // Topic nhận dữ liệu
+extern const char* topicPub;        // Topic gửi dữ liệu
 
 
 
