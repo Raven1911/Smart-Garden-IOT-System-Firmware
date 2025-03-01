@@ -102,6 +102,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
           } else {
             Serial.println("No Fan1 value found in JSON.");
         }
+
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
+        }
     }
 
     //Pump1
@@ -121,6 +126,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
             Serial.printf("Active: %d\n", Pump1.value);
           } else {
             Serial.println("No Pump1 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
         }
 
     }
@@ -143,6 +153,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
           } else {
             Serial.println("No Led1 value found in JSON.");
         }
+
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
+        }
     }
 
     //Fan2
@@ -162,6 +177,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
             Serial.printf("Active: %d\n", Fan2.value);
           } else {
             Serial.println("No Fan2 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
         }
     }
 
@@ -184,6 +204,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
             Serial.println("No Pump2 value found in JSON.");
         }
 
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
+        }
+
     }
 
     //Led2
@@ -203,6 +228,11 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
             Serial.printf("Active: %d\n", Led2.value);
           } else {
             Serial.println("No Led2 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("state")) {
+          State_FSM = receivedValues["state"].as<bool>();
+          Serial.printf("state: %d\n", State_FSM);
         }
     }
 

@@ -10,15 +10,18 @@ void millis_update(void){
 const char* ssid = "ACLAB";
 const char* password = "ACLAB2023";
 const char* mqtt_server = "test.mosquitto.org";
-// const char* topicSub = "0rm10p/read/Mario@M7";  // Topic nhận dữ liệu
-const char* topicSub = "server/sensors/esp32";  // Topic nhận dữ liệu
-const char* topicPub = "/home/sensors/esp32";         // Topic gửi dữ liệu
 
 
-deviceName Fan1 = {"Cooling Fan", true, "High"};
-deviceName Pump1 = {"Water Pump", false, "Low"};
-deviceName Led1 = {"LED Light", true, "Medium"};
+const char* topicSub = "Smart-Garden-IOT/receiver_data/esp32";  // Topic nhận dữ liệu
+const char* topicPub = "Smart-Garden-IOT/transmit_data/esp32";  // Topic gửi dữ liệu
 
-deviceName Fan2 = {"Cooling Fan", true, "High"};
-deviceName Pump2 = {"Water Pump", false, "Low"};
-deviceName Led2 = {"LED Light", true, "Medium"};
+
+deviceName Fan1 = {"Fan1", true, "High"};
+deviceName Pump1 = {"Pump1", false, "Low"};
+deviceName Led1 = {"Led1", true, "Medium"};
+
+deviceName Fan2 = {"Fan2", true, "High"};
+deviceName Pump2 = {"Pump2", false, "Low"};
+deviceName Led2 = {"Led2", true, "Medium"};
+
+bool State_FSM = true;

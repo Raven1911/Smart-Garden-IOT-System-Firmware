@@ -31,8 +31,9 @@ extern deviceName Led1;
 extern deviceName Fan2;
 extern deviceName Pump2;
 extern deviceName Led2;
-/// Configuration MQTT Server and Wifi Connection
 
+extern bool State_FSM;
+/// Configuration MQTT Server and Wifi Connection
 extern const char* ssid;
 extern const char* password;
 extern const char* mqtt_server;
