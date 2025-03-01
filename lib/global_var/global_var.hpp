@@ -16,6 +16,21 @@ void millis_update(void);
 extern unsigned long millis_present;
 #define priod_receiver_data 100
 
+//variable receiver data
+struct deviceName {
+    String name;
+    bool active;
+    String value;
+};
+
+//variable receiver data
+extern deviceName Fan1;
+extern deviceName Pump1;
+extern deviceName Led1;
+
+extern deviceName Fan2;
+extern deviceName Pump2;
+extern deviceName Led2;
 /// Configuration MQTT Server and Wifi Connection
 
 extern const char* ssid;

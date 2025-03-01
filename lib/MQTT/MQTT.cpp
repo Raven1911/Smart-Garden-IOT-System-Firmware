@@ -9,7 +9,6 @@ PubSubClient client(espClient);
 
 
 
-
 void init_Wifi_and_MQTT(void){
     // Kết nối WiFi
   Serial.print("Đang kết nối WiFi...");
@@ -85,29 +84,152 @@ void receiver_data(char* topic, byte* payload, unsigned int length) {
 
   // Kiểm tra và lấy các giá trị từ JSON
   if (receivedValues.containsKey("deviceName")) {
-    String deviceName = receivedValues["deviceName"].as<String>();
-    Serial.printf("Device Name: %s\n", deviceName.c_str());
-  } else {
+    //fan1
+    if (receivedValues["deviceName"].as<String>() == "Fan1"){
+        Fan1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Fan1.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Fan1.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Fan1.active);
+          } else {
+            Serial.println("No Fan1 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Fan1.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Fan1.value);
+          } else {
+            Serial.println("No Fan1 value found in JSON.");
+        }
+    }
+
+    //Pump1
+    if (receivedValues["deviceName"].as<String>() == "Pump1"){
+        Pump1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Pump1.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Pump1.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Pump1.active);
+          } else {
+            Serial.println("No Pump1 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Pump1.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Pump1.value);
+          } else {
+            Serial.println("No Pump1 value found in JSON.");
+        }
+
+    }
+
+    //Led1
+    if (receivedValues["deviceName"].as<String>() == "Led1"){
+        Led1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Led1.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Pump1.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Led1.active);
+          } else {
+            Serial.println("No Led1 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Led1.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Led1.value);
+          } else {
+            Serial.println("No Led1 value found in JSON.");
+        }
+    }
+
+    //Fan2
+    if (receivedValues["deviceName"].as<String>() == "Fan2"){
+        Fan2.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Fan2.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Fan2.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Fan2.active);
+          } else {
+            Serial.println("No Fan2 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Fan2.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Fan2.value);
+          } else {
+            Serial.println("No Fan2 value found in JSON.");
+        }
+    }
+
+    //Pump2
+    if (receivedValues["deviceName"].as<String>() == "Pump2"){
+        Pump2.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Pump2.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Pump2.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Pump2.active);
+          } else {
+            Serial.println("No Pump2 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Pump2.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Pump2.value);
+          } else {
+            Serial.println("No Pump2 value found in JSON.");
+        }
+
+    }
+
+    //Led2
+    if (receivedValues["deviceName"].as<String>() == "Led2"){
+        Led2.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n",  Led2.name.c_str());
+
+        if (receivedValues.containsKey("active")) {
+            Led2.active = receivedValues["active"].as<bool>();
+            Serial.printf("Active: %d\n", Led2.active);
+          } else {
+            Serial.println("No Led2 active found in JSON.");
+          }
+
+        if (receivedValues.containsKey("value")) {
+            Led2.value = receivedValues["value"].as<String>();
+            Serial.printf("Active: %d\n", Led2.value);
+          } else {
+            Serial.println("No Led2 value found in JSON.");
+        }
+    }
+
+  } 
+  else {
     Serial.println("No deviceName found in JSON.");
   }
 
-  if (receivedValues.containsKey("active")) {
-    bool active = receivedValues["active"].as<bool>();
-    Serial.printf("Active: %d\n", active);
-  } else {
-    Serial.println("No active found in JSON.");
-  }
 
-  if (receivedValues.containsKey("value")) {
-    JsonVariant value = receivedValues["value"];
-    if (value.isNull()) {
-      Serial.println("Value is null");
-    } else {
-      Serial.printf("Value: %s\n", value.as<String>().c_str());
-    }
-  } else {
-    Serial.println("No value found in JSON.");
-  }
+
+//   if (receivedValues.containsKey("active")) {
+//     bool active = receivedValues["active"].as<bool>();
+//     Serial.printf("Active: %d\n", active);
+//   } else {
+//     Serial.println("No active found in JSON.");
+//   }
+
+//   if (receivedValues.containsKey("value")) {
+//     JsonVariant value = receivedValues["value"];
+//     if (value.isNull()) {
+//       Serial.println("Value is null");
+//     } else {
+//       Serial.printf("Value: %s\n", value.as<String>().c_str());
+//     }
+//   } else {
+//     Serial.println("No value found in JSON.");
+//   }
 }
 
 

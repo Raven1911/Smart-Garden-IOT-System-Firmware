@@ -2,6 +2,7 @@
 #define MQTT_HPP
 
 #include <Arduino.h>
+#include <iostream>
 #include <ArduinoJson.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
@@ -13,6 +14,7 @@
 extern "C" {
 #endif
 //
+
 
 
 void init_Wifi_and_MQTT(void);
