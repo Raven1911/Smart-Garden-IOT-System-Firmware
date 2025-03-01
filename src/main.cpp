@@ -3,6 +3,7 @@
 #include <music_dec.hpp>
 #include <MQTT.hpp>
 #include <FSM_SETTING.hpp>
+#include <display.hpp>
 
 void setup()
 {
@@ -10,6 +11,10 @@ void setup()
   play_music(BUZZER_PIN); // Chơi nhạc khi khởi động
   init_Wifi_and_MQTT();
   pinSetup();
+  NeoPixel.begin();
+  lcd.init();
+  lcd.backlight();
+
 }
 
 void loop()

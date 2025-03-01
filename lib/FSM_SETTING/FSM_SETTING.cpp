@@ -1,7 +1,5 @@
 #include <FSM_SETTING.hpp>
 
-
-
 void FSM_Main(void){
     if (State_FSM){
         FSM_Manual();
@@ -12,19 +10,21 @@ void FSM_Main(void){
 }
 
 void FSM_Auto(void){
-    // my le
     if (Value_SoilMoisture <= 30){
         pump_on();
+        ledred_on();
     }
     if (Value_SoilMoisture > 30){
         pump_off();
+        ledgreen_on();
     }
-    if (Value_Temperature >=25){
+    if (Value_Temperature >= 25){
         controlFan();
     }
-
+    if (Value_Light <= 20 && Value_Light >= 0){
+        ledwhite_on();
+    }
 }
 
 void FSM_Manual(void){
-    // my le
 }

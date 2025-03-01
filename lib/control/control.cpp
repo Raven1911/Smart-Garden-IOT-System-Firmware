@@ -1,5 +1,7 @@
 #include "control.hpp"
 
+Adafruit_NeoPixel NeoPixel(NUM_PIXELS, PIN_NEO_PIXEL, NEO_GRB + NEO_KHZ800);
+
 void pump_on()
 {
   digitalWrite(pump, HIGH);
@@ -17,20 +19,30 @@ void controlFan()
   analogWrite(fan, fanSpeed);
 }
 
-void Led_on()
+void ledwhite_on()
 {   
-  // for (int i = 0; i < NUM_PIXELS; i++)
-  // {
-  //   NeoPixel.setPixelColor(i, NeoPixel.Color(255, 255, 255));
-  //   NeoPixel.show();
-  // }
+  for (int i = 0; i < NUM_PIXELS; i++)
+  {
+    NeoPixel.setPixelColor(i, NeoPixel.Color(255, 255, 255));
+    NeoPixel.show();
+  }
 }
 
-// void controlRGB()
-// {
-//   for (int i = 0; i < NUM_PIXELS; i++)
-//   {
-//     NeoPixel.setPixelColor(i, NeoPixel.Color(0, 255, 0));
-//     NeoPixel.show();
-//   }
-// }
+void ledred_on()
+{
+  for (int i = 0; i < NUM_PIXELS; i++)
+  {
+    NeoPixel.setPixelColor(i, NeoPixel.Color(255, 0, 0));
+    NeoPixel.show();
+  }
+}
+
+void ledgreen_on()
+{
+  for (int i = 0; i < NUM_PIXELS; i++)
+  {
+    NeoPixel.setPixelColor(i, NeoPixel.Color(0, 255, 0));
+    NeoPixel.show();
+  }
+}
+
