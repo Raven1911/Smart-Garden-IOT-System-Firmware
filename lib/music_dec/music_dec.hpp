@@ -5,6 +5,8 @@
 #ifndef MUSIC_DEC_HPP
 #define MUSIC_DEC_HPP
 
+#include <Arduino.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -103,7 +105,7 @@ extern "C" {
 #define REST     0
 
 
-void play_music(void);
+void play_music(uint8_t BUZ_PIN);
 
 
 #ifdef __cplusplus
