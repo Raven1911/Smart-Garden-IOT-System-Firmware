@@ -43,7 +43,10 @@ void ledwhite_on()
 
 void ledwhite_off()
 {
-  
+  NeoPixel.setPixelColor(1, NeoPixel.Color(0, 0, 0));
+  NeoPixel.setPixelColor(2, NeoPixel.Color(0, 0, 0)); 
+  NeoPixel.setPixelColor(3, NeoPixel.Color(0, 0, 0));  
+  NeoPixel.show();
 }
 
 void ledred_on()

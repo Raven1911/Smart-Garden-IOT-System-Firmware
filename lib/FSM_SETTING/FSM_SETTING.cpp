@@ -37,7 +37,7 @@ void FSM_Auto(void)
     }
     if (Value_Light > 20)
     {
-        
+        ledwhite_off();
     }
 }
 
@@ -45,4 +45,5 @@ void FSM_Manual(void)
 {
     pump_control_manual(Pump1.active);
     fan_control_manual(Fan1.value);
+    
 }
