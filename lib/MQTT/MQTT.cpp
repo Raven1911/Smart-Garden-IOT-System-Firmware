@@ -36,7 +36,7 @@ void Transmit_receiver_data(void)
   if (millis_present - lastMsg > priod_receiver_data)
   {
     lastMsg = millis_present;
-    StaticJsonDocument<80> doc;
+    StaticJsonDocument<200> doc;
     // doc["temperature"] = 25;
     // doc["humidity"] = 60;
     // doc["pressure"] = 1012;
@@ -47,7 +47,7 @@ void Transmit_receiver_data(void)
     doc["light"] = Value_Light;
     doc["soilMoisture"] = Value_SoilMoisture;
 
-    char output[80];
+    char output[200];
     serializeJson(doc, output);
 
     Serial.println("------------------------------------------------");
@@ -90,10 +90,12 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
     return;
   }
 
-  if (receivedValues["area: "].as<int>() == ID_area_recv){
+  if (receivedValues["area"].as<int>() == ID_area_recv){
       // Kiểm tra và lấy các giá trị từ JSON
+    Serial.printf("Area: %d\n",receivedValues["area"].as<int>());
     if (receivedValues.containsKey("deviceName"))
     {
+        
       // fan1
       if (receivedValues["deviceName"].as<String>() == "Fan1")
       {
@@ -194,7 +196,10 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
       }
     }
 
-
+    else
+    {
+      Serial.println("No deviceName found in JSON.");
+    }
 
   }
 
@@ -299,10 +304,7 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
   //     }
   //   }
   // }
-  else
-  {
-    Serial.println("No deviceName found in JSON.");
-  }
+
 
   //   if (receivedValues.containsKey("active")) {
   //     bool active = receivedValues["active"].as<bool>();
