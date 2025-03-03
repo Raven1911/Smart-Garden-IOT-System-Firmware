@@ -13,17 +13,17 @@ extern "C"
 
 // GPIO configuration
 #define BUZZER_PIN 25      //  BUZZER_PIN
-#define soilMoisturePin 32 // cảm biến đất
-#define light 33           // cảm biến ánh sáng
-#define pump 19
-#define fan 27
-#define PIN_NEO_PIXEL 26
+#define soilMoisturePin 32 // cảm biến đất: P0
+#define light 33           // cảm biến ánh sáng: P1
+#define pump 19           // P14
+#define fan 27            //P2
+#define PIN_NEO_PIXEL 26  //P10
 #define NUM_PIXELS 4
 
 // software timer configuration
 void millis_update(void);
 extern unsigned long millis_present;
-#define priod_receiver_data 100
+#define priod_receiver_data 2000
 
     // variable receiver data
     struct deviceName

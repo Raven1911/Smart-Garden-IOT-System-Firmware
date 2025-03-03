@@ -36,10 +36,14 @@ void Transmit_receiver_data(void) {
     if (millis_present - lastMsg > priod_receiver_data) {
       lastMsg = millis_present;
       StaticJsonDocument<80> doc;
-      doc["temperature"] = 25;
-      doc["humidity"] = 60;
-      doc["pressure"] = 1012;
-      doc["gas"] = 300;
+      // doc["temperature"] = 25;
+      // doc["humidity"] = 60;
+      // doc["pressure"] = 1012;
+      // doc["gas"] = 300;
+      doc["temperature"] = Value_Temperature;
+      doc["humidity"] = Value_Humidity;
+      doc["light"] = Value_Light;
+      doc["soilmoisture"] = Value_SoilMoisture;
   
       char output[80];
       serializeJson(doc, output);

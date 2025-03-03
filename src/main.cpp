@@ -4,6 +4,7 @@
 #include <MQTT.hpp>
 #include <FSM_SETTING.hpp>
 #include <display.hpp>
+#include <sensors.hpp>
 
 void setup()
 {
@@ -19,8 +20,10 @@ void setup()
 
 void loop()
 {
+  valueSensor();
   millis_update();
   Transmit_receiver_data();
   // put your main code here, to run repeatedly:
   FSM_Main();
+  lcdDisplay();
 }

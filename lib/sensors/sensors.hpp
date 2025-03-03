@@ -12,9 +12,16 @@ extern "C"
 {
 #endif
 
+extern DHT20 DHT; 
+extern int soilMoistureSensor;
+extern int lightSensor;
+extern int temperatureSensor;
+extern int humiditySensor;
+
 void readDHT20();
 void readSoilMoisture();
 void readLight();
+void valueSensor();
 
 #ifdef __cplusplus
 }

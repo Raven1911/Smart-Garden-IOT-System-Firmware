@@ -10,6 +10,7 @@ void FSM_Main(void){
 }
 
 void FSM_Auto(void){
+    Value_SoilMoisture = 50;
     if (Value_SoilMoisture <= 30){
         pump_on();
         ledred_on();
