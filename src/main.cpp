@@ -13,6 +13,7 @@ void setup()
   init_Wifi_and_MQTT();
   pinSetup();
   NeoPixel.begin();
+  lcd.clear();
   lcd.init();
   lcd.backlight();
 

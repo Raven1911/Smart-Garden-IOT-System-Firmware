@@ -23,4 +23,5 @@ void lcdDisplay()
   lcd.print(" S:");
   lcd.print(Value_SoilMoisture);
   lcd.print("%");
+  delay(1000);
 }

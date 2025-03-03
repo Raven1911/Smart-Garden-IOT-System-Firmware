@@ -16,13 +16,13 @@ const char* topicSub = "website/sensors/esp32";  // Topic nhận dữ liệu
 const char* topicPub = "iot/sensors/esp32";  // Topic gửi dữ liệu
 
 
-deviceName Fan1 = {"Fan1", true, "High"};
-deviceName Pump1 = {"Pump1", false, "Low"};
-deviceName Led1 = {"Led1", true, "Medium"};
+deviceName Fan1 = {"Fan1", true, 0};
+deviceName Pump1 = {"Pump1", false, 0};
+deviceName Led1 = {"Led1", true, 0};
 
-deviceName Fan2 = {"Fan2", true, "High"};
-deviceName Pump2 = {"Pump2", false, "Low"};
-deviceName Led2 = {"Led2", true, "Medium"};
+deviceName Fan2 = {"Fan2", true, 0};
+deviceName Pump2 = {"Pump2", false, 0};
+deviceName Led2 = {"Led2", true, 0};
 
 //biến từ cảm biến
 int Value_SoilMoisture = 0;

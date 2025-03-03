@@ -1,34 +1,48 @@
 #include <FSM_SETTING.hpp>
 
-void FSM_Main(void){
-    if (State_FSM){
-        FSM_Manual();
-    }
-    else {
+void FSM_Main(void)
+{
+    if (State_FSM)
+    {
+        // FSM_Manual();
         FSM_Auto();
+    }
+    else
+    {
+        // FSM_Auto();
+        FSM_Manual();
     }
 }
 
-void FSM_Auto(void){
-    Value_SoilMoisture = 50;
-    if (Value_SoilMoisture <= 30){
+void FSM_Auto(void)
+{
+    // Serial.print(Value_SoilMoisture);
+    if (Value_SoilMoisture <= 30)
+    {
         pump_on();
         ledred_on();
     }
-    if (Value_SoilMoisture > 30){
+    if (Value_SoilMoisture > 30)
+    {
         pump_off();
         ledgreen_on();
     }
-    if (Value_Temperature >= 25){
+    if (Value_Temperature >= 25)
+    {
         controlFan();
     }
-    if (Value_Light <= 20 && Value_Light >= 0){
+    if (Value_Light <= 20 && Value_Light >= 0)
+    {
         ledwhite_on();
+    }
+    if (Value_Light > 20)
+    {
+        
     }
 }
 
-void FSM_Manual(void){
+void FSM_Manual(void)
+{
     pump_control_manual(Pump1.active);
-    fan_control_manual(255);
-
+    fan_control_manual(Fan1.value);
 }
