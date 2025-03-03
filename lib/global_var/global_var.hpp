@@ -20,6 +20,12 @@ extern "C"
 #define PIN_NEO_PIXEL 26  //P10
 #define NUM_PIXELS 4
 
+
+
+//ID setup
+#define ID_area_send 1
+#define ID_area_recv 1
+
 // software timer configuration
 void millis_update(void);
 extern unsigned long millis_present;

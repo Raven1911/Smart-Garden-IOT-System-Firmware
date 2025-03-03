@@ -41,6 +41,7 @@ void Transmit_receiver_data(void)
     // doc["humidity"] = 60;
     // doc["pressure"] = 1012;
     // doc["gas"] = 300;
+    doc["area"] = ID_area_send;
     doc["temperature"] = Value_Temperature;
     doc["humidity"] = Value_Humidity;
     doc["light"] = Value_Light;
@@ -89,207 +90,215 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
     return;
   }
 
-  // Kiểm tra và lấy các giá trị từ JSON
-  if (receivedValues.containsKey("deviceName"))
-  {
-    // fan1
-    if (receivedValues["deviceName"].as<String>() == "Fan1")
+  if (receivedValues["area: "].as<int>() == ID_area_recv){
+      // Kiểm tra và lấy các giá trị từ JSON
+    if (receivedValues.containsKey("deviceName"))
     {
-      Fan1.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Fan1.name.c_str());
+      // fan1
+      if (receivedValues["deviceName"].as<String>() == "Fan1")
+      {
+        Fan1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n", Fan1.name.c_str());
 
-      if (receivedValues.containsKey("active"))
-      {
-        Fan1.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Fan1.active);
-      }
-      else
-      {
-        Serial.println("No Fan1 active found in JSON.");
+        if (receivedValues.containsKey("active"))
+        {
+          Fan1.active = receivedValues["active"].as<bool>();
+          Serial.printf("Active: %d\n", Fan1.active);
+        }
+        else
+        {
+          Serial.println("No Fan1 active found in JSON.");
+        }
+
+        if (receivedValues.containsKey("value"))
+        {
+          Fan1.value = receivedValues["value"].as<int>();
+          Serial.printf("value: %d\n", Fan1.value);
+        }
+        else
+        {
+          Serial.println("No Fan1 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("deviceMode"))
+        {
+          State_FSM = receivedValues["deviceMode"].as<bool>();
+          Serial.printf("deviceMode: %d\n", State_FSM);
+        }
       }
 
-      if (receivedValues.containsKey("value"))
+      // Pump1
+      if (receivedValues["deviceName"].as<String>() == "Pump1")
       {
-        Fan1.value = receivedValues["value"].as<int>();
-        Serial.printf("value: %d\n", Fan1.value);
-      }
-      else
-      {
-        Serial.println("No Fan1 value found in JSON.");
+        Pump1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n", Pump1.name.c_str());
+
+        if (receivedValues.containsKey("active"))
+        {
+          Pump1.active = receivedValues["active"].as<bool>();
+          Serial.printf("Active: %d\n", Pump1.active);
+        }
+        else
+        {
+          Serial.println("No Pump1 active found in JSON.");
+        }
+
+        if (receivedValues.containsKey("value"))
+        {
+          Pump1.value = receivedValues["value"].as<int>();
+          Serial.printf("value: %d\n", Pump1.value);
+        }
+        else
+        {
+          Serial.println("No Pump1 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("deviceMode"))
+        {
+          State_FSM = receivedValues["deviceMode"].as<bool>();
+          Serial.printf("deviceMode: %d\n", State_FSM);
+        }
       }
 
-      if (receivedValues.containsKey("deviceMode"))
+      // Led1
+      if (receivedValues["deviceName"].as<String>() == "Led1")
       {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
+        Led1.name = receivedValues["deviceName"].as<String>();
+        Serial.printf("Device Name: %s\n", Led1.name.c_str());
+
+        if (receivedValues.containsKey("active"))
+        {
+          Pump1.active = receivedValues["active"].as<bool>();
+          Serial.printf("Active: %d\n", Led1.active);
+        }
+        else
+        {
+          Serial.println("No Led1 active found in JSON.");
+        }
+
+        if (receivedValues.containsKey("value"))
+        {
+          Led1.value = receivedValues["value"].as<int>();
+          Serial.printf("Active: %d\n", Led1.value);
+        }
+        else
+        {
+          Serial.println("No Led1 value found in JSON.");
+        }
+
+        if (receivedValues.containsKey("deviceMode"))
+        {
+          State_FSM = receivedValues["deviceMode"].as<bool>();
+          Serial.printf("deviceMode: %d\n", State_FSM);
+        }
       }
     }
 
-    // Pump1
-    if (receivedValues["deviceName"].as<String>() == "Pump1")
-    {
-      Pump1.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Pump1.name.c_str());
 
-      if (receivedValues.containsKey("active"))
-      {
-        Pump1.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Pump1.active);
-      }
-      else
-      {
-        Serial.println("No Pump1 active found in JSON.");
-      }
 
-      if (receivedValues.containsKey("value"))
-      {
-        Pump1.value = receivedValues["value"].as<int>();
-        Serial.printf("value: %d\n", Pump1.value);
-      }
-      else
-      {
-        Serial.println("No Pump1 value found in JSON.");
-      }
-
-      if (receivedValues.containsKey("deviceMode"))
-      {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
-      }
-    }
-
-    // Led1
-    if (receivedValues["deviceName"].as<String>() == "Led1")
-    {
-      Led1.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Led1.name.c_str());
-
-      if (receivedValues.containsKey("active"))
-      {
-        Pump1.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Led1.active);
-      }
-      else
-      {
-        Serial.println("No Led1 active found in JSON.");
-      }
-
-      if (receivedValues.containsKey("value"))
-      {
-        Led1.value = receivedValues["value"].as<int>();
-        Serial.printf("Active: %d\n", Led1.value);
-      }
-      else
-      {
-        Serial.println("No Led1 value found in JSON.");
-      }
-
-      if (receivedValues.containsKey("deviceMode"))
-      {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
-      }
-    }
-
-    // Fan2
-    if (receivedValues["deviceName"].as<String>() == "Fan2")
-    {
-      Fan2.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Fan2.name.c_str());
-
-      if (receivedValues.containsKey("active"))
-      {
-        Fan2.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Fan2.active);
-      }
-      else
-      {
-        Serial.println("No Fan2 active found in JSON.");
-      }
-
-      if (receivedValues.containsKey("value"))
-      {
-        Fan2.value = receivedValues["value"].as<int>();
-        Serial.printf("value: %d\n", Fan2.value);
-      }
-      else
-      {
-        Serial.println("No Fan2 value found in JSON.");
-      }
-
-      if (receivedValues.containsKey("deviceMode"))
-      {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
-      }
-    }
-
-    // Pump2
-    if (receivedValues["deviceName"].as<String>() == "Pump2")
-    {
-      Pump2.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Pump2.name.c_str());
-
-      if (receivedValues.containsKey("active"))
-      {
-        Pump2.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Pump2.active);
-      }
-      else
-      {
-        Serial.println("No Pump2 active found in JSON.");
-      }
-
-      if (receivedValues.containsKey("value"))
-      {
-        Pump2.value = receivedValues["value"].as<int>();
-        Serial.printf("value: %d\n", Pump2.value);
-      }
-      else
-      {
-        Serial.println("No Pump2 value found in JSON.");
-      }
-
-      if (receivedValues.containsKey("deviceMode"))
-      {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
-      }
-    }
-
-    // Led2
-    if (receivedValues["deviceName"].as<String>() == "Led2")
-    {
-      Led2.name = receivedValues["deviceName"].as<String>();
-      Serial.printf("Device Name: %s\n", Led2.name.c_str());
-
-      if (receivedValues.containsKey("active"))
-      {
-        Led2.active = receivedValues["active"].as<bool>();
-        Serial.printf("Active: %d\n", Led2.active);
-      }
-      else
-      {
-        Serial.println("No Led2 active found in JSON.");
-      }
-
-      if (receivedValues.containsKey("value"))
-      {
-        Led2.value = receivedValues["value"].as<int>();
-        Serial.printf("value: %d\n", Led2.value);
-      }
-      else
-      {
-        Serial.println("No Led2 value found in JSON.");
-      }
-
-      if (receivedValues.containsKey("deviceMode"))
-      {
-        State_FSM = receivedValues["deviceMode"].as<bool>();
-        Serial.printf("deviceMode: %d\n", State_FSM);
-      }
-    }
   }
+
+  
+
+  //   // Fan2
+  //   if (receivedValues["deviceName"].as<String>() == "Fan2")
+  //   {
+  //     Fan2.name = receivedValues["deviceName"].as<String>();
+  //     Serial.printf("Device Name: %s\n", Fan2.name.c_str());
+
+  //     if (receivedValues.containsKey("active"))
+  //     {
+  //       Fan2.active = receivedValues["active"].as<bool>();
+  //       Serial.printf("Active: %d\n", Fan2.active);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Fan2 active found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("value"))
+  //     {
+  //       Fan2.value = receivedValues["value"].as<int>();
+  //       Serial.printf("value: %d\n", Fan2.value);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Fan2 value found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("deviceMode"))
+  //     {
+  //       State_FSM = receivedValues["deviceMode"].as<bool>();
+  //       Serial.printf("deviceMode: %d\n", State_FSM);
+  //     }
+  //   }
+
+  //   // Pump2
+  //   if (receivedValues["deviceName"].as<String>() == "Pump2")
+  //   {
+  //     Pump2.name = receivedValues["deviceName"].as<String>();
+  //     Serial.printf("Device Name: %s\n", Pump2.name.c_str());
+
+  //     if (receivedValues.containsKey("active"))
+  //     {
+  //       Pump2.active = receivedValues["active"].as<bool>();
+  //       Serial.printf("Active: %d\n", Pump2.active);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Pump2 active found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("value"))
+  //     {
+  //       Pump2.value = receivedValues["value"].as<int>();
+  //       Serial.printf("value: %d\n", Pump2.value);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Pump2 value found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("deviceMode"))
+  //     {
+  //       State_FSM = receivedValues["deviceMode"].as<bool>();
+  //       Serial.printf("deviceMode: %d\n", State_FSM);
+  //     }
+  //   }
+
+  //   // Led2
+  //   if (receivedValues["deviceName"].as<String>() == "Led2")
+  //   {
+  //     Led2.name = receivedValues["deviceName"].as<String>();
+  //     Serial.printf("Device Name: %s\n", Led2.name.c_str());
+
+  //     if (receivedValues.containsKey("active"))
+  //     {
+  //       Led2.active = receivedValues["active"].as<bool>();
+  //       Serial.printf("Active: %d\n", Led2.active);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Led2 active found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("value"))
+  //     {
+  //       Led2.value = receivedValues["value"].as<int>();
+  //       Serial.printf("value: %d\n", Led2.value);
+  //     }
+  //     else
+  //     {
+  //       Serial.println("No Led2 value found in JSON.");
+  //     }
+
+  //     if (receivedValues.containsKey("deviceMode"))
+  //     {
+  //       State_FSM = receivedValues["deviceMode"].as<bool>();
+  //       Serial.printf("deviceMode: %d\n", State_FSM);
+  //     }
+  //   }
+  // }
   else
   {
     Serial.println("No deviceName found in JSON.");
