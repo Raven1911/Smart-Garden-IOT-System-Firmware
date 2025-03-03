@@ -12,8 +12,8 @@ const char* password = "ACLAB2023";
 const char* mqtt_server = "test.mosquitto.org";
 
 
-const char* topicSub = "Smart-Garden-IOT/receiver_data/esp32";  // Topic nhận dữ liệu
-const char* topicPub = "Smart-Garden-IOT/transmit_data/esp32";  // Topic gửi dữ liệu
+const char* topicSub = "website/sensors/esp32";  // Topic nhận dữ liệu
+const char* topicPub = "iot/sensors/esp32";  // Topic gửi dữ liệu
 
 
 deviceName Fan1 = {"Fan1", true, "High"};
