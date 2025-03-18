@@ -3,12 +3,13 @@
 Adafruit_NeoPixel NeoPixel(NUM_PIXELS, PIN_NEO_PIXEL, NEO_GRB + NEO_KHZ800);
 
 //control manual initialization
-void pump_control_manual(bool active){
-  digitalWrite(pump, active);
+void pump_control_manual(int pumpspeed){
+  pumpspeed = map(pumpspeed, 0, 100, 0, 255);
+  analogWrite(pump, pumpspeed);
 }
 
-void fan_control_manual(int fanSpeed){
-  analogWrite(fan, fanSpeed);
+void fan_control_manual(bool active){
+  digitalWrite(fan, active);
   
 }
 

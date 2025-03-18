@@ -15,20 +15,18 @@ extern "C"
 #define BUZZER_PIN 25      //  BUZZER_PIN
 #define soilMoisturePin 32 // cảm biến đất: P0
 #define light 33           // cảm biến ánh sáng: P1
-#define pump 19           // P14
-#define fan 27            //P2
-#define PIN_NEO_PIXEL 26  //P10
+#define pump 19            // P14
+#define fan 27             // P2
+#define PIN_NEO_PIXEL 26   // P10
 #define NUM_PIXELS 4
 
+// ID setup
+#define ID_area_send 1
+#define ID_area_recv 1
 
-
-//ID setup
-#define ID_area_send 2
-#define ID_area_recv 2
-
-// software timer configuration
-void millis_update(void);
-extern unsigned long millis_present;
+    // software timer configuration
+    void millis_update(void);
+    extern unsigned long millis_present;
 #define priod_receiver_data 1000
 
     // variable receiver data

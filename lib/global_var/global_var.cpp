@@ -29,7 +29,7 @@ int Value_SoilMoisture = 0;
 int Value_Light = 0;
 float Value_Temperature = 0.0;
 float Value_Humidity = 0.0;
-bool State_FSM = true;
+bool State_FSM = false;
 
 void pinSetup (void){
     pinMode(pump, OUTPUT);

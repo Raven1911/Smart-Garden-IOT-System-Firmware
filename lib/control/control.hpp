@@ -14,8 +14,8 @@ extern "C"
     extern Adafruit_NeoPixel NeoPixel;
 
     // manual
-    void pump_control_manual(bool active);
-    void fan_control_manual(int fanSpeed);
+    void pump_control_manual(int pumpspeed);
+    void fan_control_manual(bool active);
     void led_control_manual(bool active);
     //
 
