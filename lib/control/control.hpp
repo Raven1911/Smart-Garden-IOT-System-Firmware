@@ -16,6 +16,7 @@ extern "C"
     // manual
     void pump_control_manual(bool active);
     void fan_control_manual(int fanSpeed);
+    void led_control_manual(bool active);
     //
 
     void pump_on();

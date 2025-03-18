@@ -12,6 +12,14 @@ void fan_control_manual(int fanSpeed){
   
 }
 
+void led_control_manual(bool active){
+  if (active){
+    ledwhite_on();
+  }
+  else ledwhite_off();
+  
+}
+
 
 //
 void pump_on()

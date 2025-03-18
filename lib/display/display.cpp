@@ -13,15 +13,16 @@ void lcdDisplay()
 
   lcd.print(" L:");
   lcd.print(Value_Light);
+  lcd.print("% ");
 
   lcd.setCursor(0, 1);
   lcd.print("H:");
   lcd.print(Value_Humidity, 1);
   // lcd.print(DHT.getHumidity(), 1);
-  lcd.print("%");
+  lcd.print("% ");
 
-  lcd.print(" S:");
+  lcd.print("S:");
   lcd.print(Value_SoilMoisture);
-  lcd.print("%");
+  lcd.print("% ");
   delay(1000);
 }

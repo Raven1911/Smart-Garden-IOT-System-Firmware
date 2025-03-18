@@ -23,13 +23,13 @@ extern "C"
 
 
 //ID setup
-#define ID_area_send 1
-#define ID_area_recv 1
+#define ID_area_send 2
+#define ID_area_recv 2
 
 // software timer configuration
 void millis_update(void);
 extern unsigned long millis_present;
-#define priod_receiver_data 100
+#define priod_receiver_data 1000
 
     // variable receiver data
     struct deviceName

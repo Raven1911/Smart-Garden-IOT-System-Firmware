@@ -45,5 +45,6 @@ void FSM_Manual(void)
 {
     pump_control_manual(Pump1.active);
     fan_control_manual(Fan1.value);
+    led_control_manual(Led1.active);
     
 }

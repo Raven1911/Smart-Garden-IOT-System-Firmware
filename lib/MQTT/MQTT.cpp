@@ -170,7 +170,7 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
 
         if (receivedValues.containsKey("active"))
         {
-          Pump1.active = receivedValues["active"].as<bool>();
+          Led1.active = receivedValues["active"].as<bool>();
           Serial.printf("Active: %d\n", Led1.active);
         }
         else
@@ -181,7 +181,7 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
         if (receivedValues.containsKey("value"))
         {
           Led1.value = receivedValues["value"].as<int>();
-          Serial.printf("Active: %d\n", Led1.value);
+          Serial.printf("Value: %d\n", Led1.value);
         }
         else
         {
