@@ -27,7 +27,7 @@ extern "C"
     // software timer configuration
     void millis_update(void);
     extern unsigned long millis_present;
-#define priod_receiver_data 1000
+#define priod_receiver_data 10
 
     // variable receiver data
     struct deviceName
