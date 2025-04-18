@@ -5,6 +5,8 @@ long lastMsg = 0; // Thời điểm gửi tin nhắn cuối cùng
 // Khởi tạo MQTT Client
 WiFiClientSecure espClient;
 PubSubClient client(espClient);
+bool flag_transmit = false;
+int count_flag = 0;
 
 void init_Wifi_and_MQTT(void)
 {
@@ -38,6 +40,7 @@ void Transmit_receiver_data(void)
   {
     lastMsg = millis_present;
     StaticJsonDocument<200> doc;
+    StaticJsonDocument<200> statusdevice;
     // doc["temperature"] = 25;
     // doc["humidity"] = 60;
     // doc["pressure"] = 1012;
@@ -48,15 +51,38 @@ void Transmit_receiver_data(void)
     doc["light"] = Value_Light;
     doc["soilMoisture"] = Value_SoilMoisture;
 
+    //statusdevice["deviceName"]=0;
+    statusdevice["area"]= ID_area_send;
+    statusdevice["mode"]= "AUTO";
+
     char output[200];
     serializeJson(doc, output);
+    char output1[200];
+    serializeJson(statusdevice, output1);
 
-    Serial.println("------------------------------------------------");
-    Serial.println("Gửi dữ liệu tới topic:");
-    Serial.println(topicPub);
-    Serial.println(output);
-    client.publish(topicPub, output);
-    Serial.println("------------------------------------------------");
+    if (flag_transmit){
+      Serial.println("------------------------------------------------");
+      Serial.println("Gửi dữ liệu tới topic:");
+      Serial.println(topicPub);
+      Serial.println(output);
+      client.publish(topicPub, output);
+      Serial.println("------------------------------------------------");
+    }
+    else
+    {
+      Serial.println("------------------------------------------------");
+      Serial.println("Gửi dữ liệu tới topic:");
+      Serial.println(output1);
+      client.publish(topicPub, output1);
+      Serial.println("------------------------------------------------");
+      if(count_flag > 5){ 
+        flag_transmit = true;
+      }
+      count_flag++;
+      delay(1000);
+    }
+    
+    
   }
 }
 
