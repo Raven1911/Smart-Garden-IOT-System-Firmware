@@ -3,7 +3,7 @@
 long lastMsg = 0; // Thời điểm gửi tin nhắn cuối cùng
 
 // Khởi tạo MQTT Client
-WiFiClient espClient;
+WiFiClientSecure espClient;
 PubSubClient client(espClient);
 
 void init_Wifi_and_MQTT(void)
@@ -19,7 +19,8 @@ void init_Wifi_and_MQTT(void)
   Serial.println("\nWiFi đã kết nối");
 
   // Cấu hình MQTT Server và callback
-  client.setServer(mqtt_server, 1883);
+  espClient.setInsecure();
+  client.setServer(mqtt_server, mqtt_port);
   client.setCallback(receiver_data);
 }
 
@@ -332,7 +333,8 @@ void reconnect()
   {
     Serial.print("Đang kết nối lại MQTT...");
     String clientId = "ESP32Client-" + String(random(0xffff), HEX);
-    if (client.connect(clientId.c_str()))
+    //clientID += String(random(0xffff),HEX);
+    if (client.connect(clientId.c_str(), mqtt_username, mqtt_password))
     {
       Serial.println("Đã kết nối MQTT");
       client.subscribe(topicSub); // Đăng ký nhận dữ liệu từ topic
@@ -347,3 +349,5 @@ void reconnect()
     }
   }
 }
+
+

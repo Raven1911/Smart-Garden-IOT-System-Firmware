@@ -21,13 +21,13 @@ extern "C"
 #define NUM_PIXELS 4
 
 // ID setup
-#define ID_area_send 1
-#define ID_area_recv 1
+#define ID_area_send 2
+#define ID_area_recv 2
 
     // software timer configuration
     void millis_update(void);
     extern unsigned long millis_present;
-#define priod_receiver_data 10
+#define priod_receiver_data 1000
 
     // variable receiver data
     struct deviceName
@@ -51,6 +51,9 @@ extern "C"
     extern const char *ssid;
     extern const char *password;
     extern const char *mqtt_server;
+    extern const int  mqtt_port;
+    extern const char *mqtt_username;
+    extern const char *mqtt_password;
     // const char* topicSub = "0rm10p/read/Mario@M7";  // Topic nhận dữ liệu
     extern const char *topicSub; // Topic nhận dữ liệu
     extern const char *topicPub; // Topic gửi dữ liệu

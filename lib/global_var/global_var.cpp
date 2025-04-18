@@ -10,7 +10,11 @@ void millis_update(void)
 /// Configuration MQTT Server and Wifi Connection
 const char *ssid = "ACLAB";
 const char *password = "ACLAB2023";
-const char *mqtt_server = "test.mosquitto.org";
+
+const char *mqtt_server = "ce10b10fa24f458987c9ba52e1e6eab1.s1.eu.hivemq.cloud";
+const int   mqtt_port = 8883;
+const char *mqtt_username = "Iot_smart123";
+const char *mqtt_password = "Iot_smart123@";
 
 const char *topicSub = "website/sensors/esp32"; // Topic nhận dữ liệu
 const char *topicPub = "iot/sensors/esp32";     // Topic gửi dữ liệu
