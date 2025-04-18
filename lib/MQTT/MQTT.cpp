@@ -26,6 +26,7 @@ void init_Wifi_and_MQTT(void)
   client.setCallback(receiver_data);
 }
 
+String mode = "AUTO";
 // Transmit_data
 void Transmit_receiver_data(void)
 {
@@ -53,7 +54,7 @@ void Transmit_receiver_data(void)
 
     //statusdevice["deviceName"]=0;
     statusdevice["area"]= ID_area_send;
-    statusdevice["mode"]= "AUTO";
+    statusdevice["mode"]= mode;
 
     char output[200];
     serializeJson(doc, output);
