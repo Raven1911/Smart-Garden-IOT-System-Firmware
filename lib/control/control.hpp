@@ -26,6 +26,7 @@ extern "C"
     void ledwhite_off();
     void ledred_on();
     void ledgreen_on();
+    void led_off();
 
 #ifdef __cplusplus
 }

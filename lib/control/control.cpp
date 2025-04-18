@@ -72,3 +72,8 @@ void ledgreen_on()
   NeoPixel.show();
 }
 
+void led_off()
+{
+  NeoPixel.setPixelColor(0, NeoPixel.Color(0, 0, 0));  
+  NeoPixel.show();
+}

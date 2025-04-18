@@ -43,6 +43,7 @@ void FSM_Auto(void)
 
 void FSM_Manual(void)
 {
+    led_off();
     pump_control_manual(Pump1.value);
     fan_control_manual(Fan1.active);
     led_control_manual(Led1.active);

@@ -21,8 +21,8 @@ extern "C"
 #define NUM_PIXELS 4
 
 // ID setup
-#define ID_area_send 2
-#define ID_area_recv 2
+#define ID_area_send 1
+#define ID_area_recv 1
 
     // software timer configuration
     void millis_update(void);
