@@ -9,8 +9,7 @@ void pump_control_manual(int pumpspeed){
 }
 
 void fan_control_manual(bool active){
-  digitalWrite(fan, active);
-  
+  active ? analogWrite(fan, 255) : analogWrite(fan, 0);
 }
 
 void led_control_manual(bool active){
@@ -25,12 +24,12 @@ void led_control_manual(bool active){
 //
 void pump_on()
 {
-  digitalWrite(pump, HIGH);
+  analogWrite(pump, 255);
 }
 
 void pump_off()
 {
-  digitalWrite(pump, LOW);
+  analogWrite(pump, 0);
 } 
 
 void controlFan()

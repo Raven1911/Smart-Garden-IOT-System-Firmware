@@ -21,10 +21,10 @@ void setup()
 
 void loop()
 {
+  FSM_Main();
   valueSensor();
   millis_update();
   Transmit_receiver_data();
   // put your main code here, to run repeatedly:
-  FSM_Main();
   lcdDisplay();
 }

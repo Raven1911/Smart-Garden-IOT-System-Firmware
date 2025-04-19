@@ -69,7 +69,7 @@ void Transmit_receiver_data(void)
       client.publish(topicPub, output);
       Serial.println("------------------------------------------------");
     }
-    else
+    if(!flag_transmit)
     {
       Serial.println("------------------------------------------------");
       Serial.println("Gửi dữ liệu tới topic:");
@@ -121,6 +121,11 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
   if (receivedValues["area"].as<int>() == ID_area_recv){
       // Kiểm tra và lấy các giá trị từ JSON
     Serial.printf("Area: %d\n",receivedValues["area"].as<int>());
+    if (receivedValues.containsKey("deviceMode"))
+        {
+          State_FSM = receivedValues["deviceMode"].as<bool>();
+          Serial.printf("deviceMode: %d\n", State_FSM);
+        }
     if (receivedValues.containsKey("deviceName"))
     {
         
@@ -150,11 +155,11 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
           Serial.println("No Fan1 value found in JSON.");
         }
 
-        if (receivedValues.containsKey("deviceMode"))
-        {
-          State_FSM = receivedValues["deviceMode"].as<bool>();
-          Serial.printf("deviceMode: %d\n", State_FSM);
-        }
+        // if (receivedValues.containsKey("deviceMode"))
+        // {
+        //   State_FSM = receivedValues["deviceMode"].as<bool>();
+        //   Serial.printf("deviceMode: %d\n", State_FSM);
+        // }
       }
 
       // Pump1
@@ -183,11 +188,11 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
           Serial.println("No Pump1 value found in JSON.");
         }
 
-        if (receivedValues.containsKey("deviceMode"))
-        {
-          State_FSM = receivedValues["deviceMode"].as<bool>();
-          Serial.printf("deviceMode: %d\n", State_FSM);
-        }
+        // if (receivedValues.containsKey("deviceMode"))
+        // {
+        //   State_FSM = receivedValues["deviceMode"].as<bool>();
+        //   Serial.printf("deviceMode: %d\n", State_FSM);
+        // }
       }
 
       // Led1
@@ -216,11 +221,11 @@ void receiver_data(char *topic, byte *payload, unsigned int length)
           Serial.println("No Led1 value found in JSON.");
         }
 
-        if (receivedValues.containsKey("deviceMode"))
-        {
-          State_FSM = receivedValues["deviceMode"].as<bool>();
-          Serial.printf("deviceMode: %d\n", State_FSM);
-        }
+        // if (receivedValues.containsKey("deviceMode"))
+        // {
+        //   State_FSM = receivedValues["deviceMode"].as<bool>();
+        //   Serial.printf("deviceMode: %d\n", State_FSM);
+        // }
       }
     }
 

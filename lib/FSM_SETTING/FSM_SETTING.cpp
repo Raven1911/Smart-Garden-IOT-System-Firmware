@@ -1,6 +1,6 @@
 #include <FSM_SETTING.hpp>
 
-void FSM_Main(void)
+void FSM_Main()
 {
     if (State_FSM)
     {
@@ -12,9 +12,10 @@ void FSM_Main(void)
         // FSM_Auto();
         FSM_Manual();
     }
+    //State_FSM ? FSM_Auto() : FSM_Manual();
 }
 
-void FSM_Auto(void)
+void FSM_Auto()
 {
     // Serial.print(Value_SoilMoisture);
     if (Value_SoilMoisture <= 30)
@@ -41,8 +42,8 @@ void FSM_Auto(void)
     }
 }
 
-void FSM_Manual(void)
-{
+void FSM_Manual()
+{   
     led_off();
     pump_control_manual(Pump1.value);
     fan_control_manual(Fan1.active);

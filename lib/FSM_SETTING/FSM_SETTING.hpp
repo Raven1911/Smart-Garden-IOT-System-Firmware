@@ -10,9 +10,9 @@ extern "C" {
 #endif
 
 ///
-void FSM_Main(void);
-void FSM_Auto(void);
-void FSM_Manual(void);
+void FSM_Main();
+void FSM_Auto();
+void FSM_Manual();
 
 
 
